@@ -6,12 +6,21 @@ const gifsOnlyOption = document.getElementById('gifs-only-option')
 const memeModalInner = document.getElementById('meme-modal-inner')
 const memeModal = document.getElementById('meme-modal')
 const memeModalCloseBtn = document.getElementById('meme-modal-close-btn')
+const memeModalOverlay = document.getElementById('meme-modal-overlay')
+
+document.addEventListener("click", handleDocumentClick)
 
 emotionRadios.addEventListener('change', highlightCheckedOption)
 
 memeModalCloseBtn.addEventListener('click', closeModal)
 
 getImageBtn.addEventListener('click', renderCat)
+
+function handleDocumentClick(e) {
+    if (e.target.id === 'meme-modal-overlay') {
+        closeModal()
+    }
+}
 
 function highlightCheckedOption(e){
     const radios = document.getElementsByClassName('radio')
@@ -23,6 +32,7 @@ function highlightCheckedOption(e){
 
 function closeModal(){
     memeModal.style.display = 'none'
+    memeModalOverlay.classList.remove('meme-modal-active')
 }
 
 function renderCat(){
@@ -35,6 +45,7 @@ function renderCat(){
         >
         `
     memeModal.style.display = 'flex'
+    memeModalOverlay.classList.add('meme-modal-active')
 }
 
 function getSingleCatObject(){

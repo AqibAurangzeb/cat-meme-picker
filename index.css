@@ -160,3 +160,10 @@ input[type="radio"]{
     background-color: #bd301d;
     border: 2px solid #bd301d;
 }
+
+.meme-modal-active {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: hsla(30, 1%, 56%, 0.7);
+}
